@@ -37,7 +37,7 @@
 
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   cursor: default;
 }
 
@@ -49,6 +49,13 @@ a {
 ul {
   list-style: none;
   padding-left: 0;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 /* Typography */
@@ -120,4 +127,37 @@ p {
 .navbar__menu__items:hover {
   background-color: var(--color-dark-pink);
   border-radius: var(--size-border-radius);
+}
+
+/* Home */
+
+#home {
+  background: center/cover no-repeat url("imgs/profile.png");
+  height: 100vh;
+  padding: 40px;
+  text-align: center;
+}
+
+/* .home__avatar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 2px solid var(--color-white)
+}
+
+.home__tile {
+  padding-top: 300px;
+  color: var(--color-white)
+} */
+
+.home__contact {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-bold);
+  margin: 24px;
+  padding: 8px 12px;
+  border: 2px solid var(--color-white);
+  border-radius: var(--size-border-radius);
+  color: var(--color-white);
+  position: relative;
+  top: 75%;
 }
