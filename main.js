@@ -63,6 +63,15 @@ document.addEventListener('scroll', () => {
 //   contact.scrollIntoView();
 // })
 
+
+
+// const toggle = document.querySelector('.navbar__toggle-btn');
+// const menu = document.querySelector('.navbar__menu');
+// toggle.addEventListener('click', () => {
+//   menu.classList.toggle('active');
+// })
+
+
 // Handle scrolling when tapping on the navbar menu
 
 const navbarMenu = document.querySelector('.navbar__menu');
@@ -73,8 +82,14 @@ navbarMenu.addEventListener('click', () => {
     return;
   }
   // console.log(event.target.dataset.link);
-
+  navbarMenu.classList.remove('open');
   scrollIntoView(link);
+});
+
+// Navbar toggle button for small screen
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click', () => {
+  navbarMenu.classList.toggle('open');
 });
 
 // Handel click on "contact me" button on home
@@ -158,29 +173,33 @@ arrowUp.addEventListener('click', () => {
 // Projects
 const workBtnContainer = document.querySelector('.work__categories');
 const projectContainer = document.querySelector('.work__projects');
-const projects = document.querySelectorAll('.project');
+const projects = document.querySelector('.project');
 workBtnContainer.addEventListener('click', (e) => {
   const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
   if(filter == null) {
     return;
   }
 
-  projectContainer.classList.add('anim-out');
-
   
 
+// Remove selection from the previous item and select the new one
+  const active = document.querySelector('.category__btn.selected');
+  active.classList.remove('selected');
+  const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+  target.classList.add('selected');
+
+  projectContainer.classList.add('anim-out');
   setTimeout(() => {
-    projects.forEach((project) => {
-      // console.log(project.dataset.type);
-      if(filter === '*' || filter === project.dataset.type) {
-        project.classList.remove('invisible')
+    projects.forEach(project => {
+      console.log(project.dataset.type);
+      if (filter === '*' || filter === project.dataset.type) {
+        project.classList.remove('invisible');
       } else {
-        project.classList.add('invisible')
+        project.classList.add('invisible');
       }
     });
-    projectContainer.classList.remove('anim-out');
-
   }, 300);
+  
   // console.log('--------------------');
 
   // for(let project of projects) {
@@ -196,4 +215,6 @@ workBtnContainer.addEventListener('click', (e) => {
 
   // }
   // console.log(filter);
-})
+});
+
+
