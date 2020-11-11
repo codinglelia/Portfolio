@@ -110,7 +110,6 @@ p {
   background-color: var(--color-black);
   padding: 8px;
   transition: all var(--animation-durration) ease-in-out;
-  
 }
 
 .navbar__logo {
@@ -161,9 +160,18 @@ p {
   background: center/cover no-repeat url("imgs/profile.png");
   height: 100vh;
   padding: 40px;
-  padding-top: 220px;
+  padding-top: 400px;
   text-align: center;
+  z-index: 2;
 }
+
+
+#home.home--dark {
+  background-color: var(--color-white);
+  opacity: 0.7;
+  transition: all var(--animation-durration) ease-in-out;
+}
+
 
 /* .home__avatar {
   width: 250px;

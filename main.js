@@ -89,3 +89,27 @@ function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({behavior: 'smooth'});
 }
+
+// Make home transparent when scrolling down
+// const home = document.querySelector('#home');
+
+// document.addEventListener('scroll', () => {
+//   // console.log(window.scrollY);
+//   // console.log(`navbar height: ${navbarHeight}`);
+//   if(window.scrollY > navbarHeight) {
+//     home.classList.add('home--dark');
+//   } else {
+//     home.classList.remove('home--dark');
+//   }
+// })
+
+// Make home slowly fade to transparent as the window scrolls down 
+
+const home = document.querySelector('#home'); 
+// If wanting to make background transparent without content,
+// Selector should be .home__container 
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+  // console.log(1- window.scrollY / homeHeight);
+  home.style.opacity = 1- window.scrollY / homeHeight;
+})
