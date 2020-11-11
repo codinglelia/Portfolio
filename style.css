@@ -379,6 +379,13 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 1;
+  transition: all var(--animation-durration) ease-out;
+}
+
+.work__projects.anim-out {
+  opacity: 0;
+  transform: scale(0.96) translateY(40px);
 }
 
 .project {
@@ -392,6 +399,9 @@ p {
   background-color: var(--color-light-white);
 }
 
+.project.invisible {
+  display: none;
+}
 .project__img {
   max-width: 100%;
   max-height: 100%;
@@ -526,7 +536,6 @@ p {
   /* display: block; */
   opacity: 1;
   pointer-events: auto;
-
 }
 
 /* Put the minimum contents in media query */

@@ -132,6 +132,68 @@ document.addEventListener('scroll', () => {
 
 // Handel click on the "arrow up" button
 
-document.addEventListener('click', () => {
+arrowUp.addEventListener('click', () => {
   scrollIntoView('#home');
+})
+
+// ---------------------
+// const category = document.querySelector('.work__categories');
+// category.addEventListener('click', () => {
+//   const target = event.target;
+//   const type = target.dataset.type;
+//   if (type == null) {
+//     return;
+//   }
+//   console.log(event.target.dataset.type);
+
+//   const workPlace = document.querySelector('.work__projects');
+
+//   const works = document.querySelector('.category__btn');
+//   works.addEventListener('click', () => {
+//     workPlace.addEventListener
+//   })
+// })
+
+
+// Projects
+const workBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+workBtnContainer.addEventListener('click', (e) => {
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  if(filter == null) {
+    return;
+  }
+
+  projectContainer.classList.add('anim-out');
+
+  
+
+  setTimeout(() => {
+    projects.forEach((project) => {
+      // console.log(project.dataset.type);
+      if(filter === '*' || filter === project.dataset.type) {
+        project.classList.remove('invisible')
+      } else {
+        project.classList.add('invisible')
+      }
+    });
+    projectContainer.classList.remove('anim-out');
+
+  }, 300);
+  // console.log('--------------------');
+
+  // for(let project of projects) {
+  //   console.log(projects);
+
+  // }
+  // console.log('--------------------');
+
+  // let project;
+  // for(let i = 0; i < projects.length ; i++) {
+  //   project = projects[i];
+  //   console.log(projects);
+
+  // }
+  // console.log(filter);
 })
