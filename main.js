@@ -34,7 +34,7 @@ document.addEventListener('scroll', () => {
   } else {
     navbar.classList.remove('navbar--dark');
   }
-})
+});
 
 // $('#navbar a, .home__contact').on('click', function(event) {
 //   if (this.hash !== '') {
@@ -75,7 +75,7 @@ navbarMenu.addEventListener('click', () => {
   // console.log(event.target.dataset.link);
 
   scrollIntoView(link);
-})
+});
 
 // Handel click on "contact me" button on home
 
@@ -83,12 +83,12 @@ const contactBtn = document.querySelector('.home__contact');
 contactBtn.addEventListener('click', () => {
   
   scrollIntoView('#contact');
-})
+});
 
 function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({behavior: 'smooth'});
-}
+};
 
 // Make home transparent when scrolling down
 // const home = document.querySelector('#home');
@@ -112,4 +112,26 @@ const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
   // console.log(1- window.scrollY / homeHeight);
   home.style.opacity = 1- window.scrollY / homeHeight;
+  
+});
+
+// document.addEventListener('scroll', () => {
+//   arrowBtn.style.opacity = 1 - window.scollY / homeHeight;
+//   console.log(arrowBtn.style.opacity);
+// })
+
+// Show "arrow up" button when scrolling down
+const arrowUp = document.querySelector('.arrow-up');
+document.addEventListener('scroll', () => {
+  if(window.scrollY > homeHeight / 2) {
+    arrowUp.classList.add('visible');
+  } else {
+    arrowUp.classList.remove('visible');
+  }
+});
+
+// Handel click on the "arrow up" button
+
+document.addEventListener('click', () => {
+  scrollIntoView('#home');
 })
