@@ -142,11 +142,11 @@ p {
 
 .navbar__menu__items:hover {
   border-color: var(--color-white);
-  background-color: var(--color-dark-pink);
+  background-color: var(--color-grey);
 }
 
 .navbar__toggle-btn {
-  bottom: 24px;
+  top: 24px;
   right: 32px;
   position: absolute;
   font-size: 24px;
@@ -158,14 +158,13 @@ p {
 /* Home */
 
 #home {
-  background: center/cover no-repeat url("imgs/profile.png");
+  background: center/cover no-repeat url("imgs/background_moon.png");
   height: 100vh;
   padding: 40px;
-  padding-top: 400px;
+  padding-top: 250px;
   text-align: center;
   z-index: 2;
 }
-
 
 #home.home--dark {
   background-color: var(--color-white);
@@ -173,18 +172,25 @@ p {
   transition: all var(--animation-durration) ease-in-out;
 }
 
-
 /* .home__avatar {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   border: 2px solid var(--color-white)
 }
+*/
 
-.home__tile {
-  padding-top: 300px;
-  color: var(--color-white)
-} */
+.home__title{
+  padding-top: 10px;
+  color: var(--color-white);
+  font-size: var(--font-large);
+} 
+
+.home__description{
+  padding-top: 10px;
+  color: var(--color-white);
+  font-size: var(--font-small);
+}
 
 .home__contact {
   font-size: var(--font-regular);
@@ -198,6 +204,9 @@ p {
   top: 75%;
 }
 
+.home__contact:hover {
+  background-color: var(--color-grey);
+}
 /* What if I put a text with black background ? */
 
 /* Section common */
@@ -299,7 +308,7 @@ p {
 }
 
 .skill {
-  margin-bottom: 32px; 
+  margin-bottom: 32px;
 }
 
 .skill__description {
@@ -330,7 +339,7 @@ p {
 
 -> Giving padding*/
 
-.tools, 
+.tools,
 .etc {
   padding: 20px;
 }
@@ -346,6 +355,7 @@ p {
   border-radius: var(--size-border-radius);
   font-size: var(--weight-regular);
   padding: 8px 48px;
+  position: relative;
 }
 
 .category__btn.selected,
@@ -366,12 +376,14 @@ p {
   color: var(--color-white);
   width: 24px;
   height: 24px;
-  display: inline-block; 
+  display: inline-block;
   /* span make content be tight */
   line-height: 24px;
-  position: relative;
+  /* position: relative; */
+  position: absolute;
   top: -20px;
-  left: 4px;
+  /* left: 4px; */
+  right: 16px;
   opacity: 0;
   transition: all var(--animation-durration) ease-in;
 }
@@ -382,6 +394,7 @@ p {
   justify-content: center;
   opacity: 1;
   transition: all var(--animation-durration) ease-out;
+  width: 100%;
 }
 
 .work__projects.anim-out {
@@ -433,7 +446,7 @@ p {
 }
 
 .project__description h3:after {
-  content: '';
+  content: "";
   display: block;
   position: relative;
   left: 50%;
@@ -489,10 +502,12 @@ p {
 
 /* Contact */
 #contact {
-  background-color: var(--color-pink);
+  background-color: var(--color-black);
 }
 
-.contact__title, .contact__email, .contact__rights {
+.contact__title,
+.contact__email,
+.contact__rights {
   color: var(--color-white);
 }
 
@@ -525,7 +540,7 @@ p {
   right: 50px;
   font-size: 50px;
   color: var(--color-white);
-  background-color:var(--color-pink); 
+  background-color: var(--color-pink);
   border-radius: 50%;
 
   /* display: none; */
@@ -542,15 +557,37 @@ p {
 
 /* Put the minimum contents in media query */
 @media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+
   .navbar__toggle-btn {
     display: block;
-    top: 0;
+    top: 16px;
+    right: 16px;
+    font-size: var(--font-medium);
+  }
+
+  /* Myself */
+  .navbar__logo {
+    display: flex;
+    justify-content: center;
+  }
+  /* Myself */
+  .navbar__logo img {
+    width:30px;
+    height:30px;
   }
 
   #navbar {
     flex-direction: column;
     align-items: flex-start;
-    background-color:var(--color-black);
+    background-color: var(--color-black);
   }
 
   #navbar.navbar--dark {
@@ -572,12 +609,27 @@ p {
     display: flex;
   }
 
+  .section {
+    padding: 16px;
+  }
+
   .about__majors {
     flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 0;
   }
 
   .major {
     margin-bottom: 38px;
+  }
+
+  .category__btn {
+    margin: 4px 0;
+    width: 100%;
+  }
+
+  .category__count {
+    right: 50px;
   }
 
   .skillset {
@@ -588,8 +640,32 @@ p {
     flex-grow: 1;
   }
 
+  .testimonial {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .testimonial_avatar {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .testimonial_avatar:nth-child(odd),
+  .testimonial_avatar:nth-child(even) {
+    /* margin: 10px 0; */
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .testimonial__speech-bubble {
+    order: 1;
+  }
+
+  .arrow-up {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    bottom: 16px;
+    right: 16px;
   }
 }
