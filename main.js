@@ -73,6 +73,7 @@ document.addEventListener('scroll', () => {
     arrowUp.classList.remove('visible');
   }
   // console.log(`window.scrollY: ${window.scrollY}, homeHeight/2: ${homeHeight / 2}`)
+  navbarMenu.classList.remove('open');
 });
 
 // Handel click on the "arrow up" button
@@ -176,8 +177,16 @@ sections.forEach(section => observer.observe(section));
 window.addEventListener('wheel', () => {
   if(window.scrollY === 0) {
     selectedNavIndex = 0;
-  } else if (window.scrollY + window.innerHeight === document.body.clientHeight) {
+  } else if (Math.round(window.scrollY + window.innerHeight) >= document.body.clientHeight) {
     selectedNavIndex = navItems.length - 1;
   } 
   selectNavItem(navItems[selectedNavIndex]);
 });
+
+// console.log(window.scrollY);
+// console.log(window.innerHeight);
+// console.log(window.scrollY + window.innerHeight);
+// console.log(document.body.clientHeight);
+// console.log(Math.round(window.scrollY + window.innerHeight));
+
+
